@@ -1,0 +1,16 @@
+name: GitHub Action Test
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: EchoTest
+        id: tags
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}"
